@@ -1,0 +1,13 @@
+.bodypillow
+{
+	width: 196px;
+	height: 196px;
+	border:solid;
+	border-width: 1px;
+	margin-left: 5px;
+}
+
+.row_img
+{
+	margin-top: 1%;
+}

@@ -1,0 +1,27 @@
+.page-selector
+{
+	display:inline-block;
+	text-decoration:none;
+	background-color:black;
+	color:red;
+}
+
+a
+{
+	text-decoration:none;
+}
+
+.page-selector a
+{
+	text-decoration:none;
+}
+
+.page-selector a:hover
+{
+	text-decoration:none;
+}
+
+.page-selector p
+{
+	text-decoration:none;
+}

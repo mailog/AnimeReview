@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="/css/toolbar.css" />
+<link rel="stylesheet" type="text/css" href="/css/home.css" />
+</head>
+<body>
+
+<div class = "toolbar">
+	<div class = "first_row">
+		<a href = "/"><button class = "tool_butt" id = "logo"><p style = "color:red; display:inline; margin:0px;">W</p><p style="display:inline;margin:0px;">aifuWarriors</p></button></a>
+		<input type = "text" class = "search"></input>
+		<a href = "/"><button id = "search_butt">Search</button></a>
+		<div class = "slogan"><p>THE BEST </p><p style = "color:red;margin:0px;whitespace:initial; font-size:20px;">&ensp;FREE BODYPILLOW&ensp;</p><p>SITE</p></div>
+	</div>
+	<div class = "second_row">
+		<a href = "/anime/1"><button class = "tool_butt">All Anime</button> </a>
+		<a href = "/animesearch"><button class = "tool_butt">Search For Anime</button></a>
+		<a th:if="${loggedIn}" href = "/account"><button class = "tool_butt"><p th:text = "${currentuser}" /></button></a>
+		<a th:if="${loggedIn}" href = "/logout"><button class = "tool_butt">Logout</button></a>
+		<a th:unless="${loggedIn}" href = "/signup"><button class = "tool_butt">Sign Up!</button></a>
+		<a th:unless="${loggedIn}" href = "/login"><button class = "tool_butt">Log in!</button></a>
+	</div>
+	<div class = "third_row">
+		<a href = "/bodypillows"><button class = "tool_butt">All Bodypillows</button></a>
+		<a href = "/best"><button class = "tool_butt">Best Bodypillows</button></a>
+		<a href = "/amateur"><button class = "tool_butt">REAL Amateur Bodypillows!</button></a>
+		<a href = "/adventure"><button class = "tool_butt">BODYPILLOW ADVENTURE! ^_^</button></a>
+	</div>
+		<a href = "/summonerswar"><button class = "tool_butt" id = "sw_butt">Join WaifuWarriors in <img style = "width:81px;height:27px;" src = "https://43ch47qsavx2jcvnr30057vk-wpengine.netdna-ssl.com/wp-content/uploads/2015/01/logo@2x.png"/> Today!</button></a>
+</div>		
+
+<div class = "home">
+	<div class = "row_img">
+		<img class = "bodypillow" src = "https://ae01.alicdn.com/kf/HTB1Q8kNKpXXXXaeXVXXq6xXFXXXa/Hot-Japanese-Anime-Body-font-b-Pillow-b-font-Cover-Cases-Double-Sided-Pillowcase-2Way-2WT.jpg"/>
+		<img class = "bodypillow" src = "http://d310a9hpolx59w.cloudfront.net/product_photos/37705467/ADP-511099_20MLP_original.jpg"/>
+		<img class = "bodypillow" src = "http://thumbs3.ebaystatic.com/d/l225/m/mS0-OVAM-4d3tHqI20QDnJQ.jpg"/>
+		<img class = "bodypillow" src = "http://www.otakusky.com/ebay/sword-art-online-sinon-body-pillow-case-20150617.jpg"/>
+	</div>
+	<div class = "row_img">
+		<img class = "bodypillow" src = "https://d111vui60acwyt.cloudfront.net/product_photos/38379966/H3118_20overlord_original.jpg"/>
+		<img class = "bodypillow" src = "https://cdn.shopify.com/s/files/1/0713/4379/products/PoopyBodyPillow_365d7d06-f687-4ec1-b3ed-1f58437a66e3_1024x1024.jpg?v=1491499634"/>
+		<img class = "bodypillow" src = "http://www.moegallery.com/ebay/vocaloid-ia-body-pillow-case-3089.jpg"/>
+		<img class = "bodypillow" src = "http://www.otakusky.com/ebay/konosuba-megumin-body-pillow-case-73071.jpg"/>
+	</div>
+	<div class = "row_img">
+		<img class = "bodypillow" src = "https://dpegb9ebondhq.cloudfront.net/product_photos/13862947/B2_original.jpeg"/>
+		<img class = "bodypillow" src = "https://ae01.alicdn.com/kf/HTB1M4uhJXXXXXXZXFXXq6xXFXXX0/Hot-Japanese-Mashiroiro-Symphony-Anime-Body-Pillow-Hugging-Charming-Pillow-Covers.jpg"/>
+		<img class = "bodypillow" src = "http://i.ebayimg.com/images/i/162407653015-0-1/s-l1000.jpg"/>
+		<img class = "bodypillow" src = "http://www.moegallery.com/ebay/girls-und-panzer-chiyo-shimada-body-pillow-case-sm1319b.jpg"/>
+	</div>
+	<div class = "row_img">
+		<img class = "bodypillow" src = "https://cdn.shopify.com/s/files/1/0713/4379/products/PoopyBodyPillow_365d7d06-f687-4ec1-b3ed-1f58437a66e3_1024x1024.jpg?v=1491499634"/>
+		<img class = "bodypillow" src = "https://cdn.shopify.com/s/files/1/0713/4379/products/PoopyBodyPillow_365d7d06-f687-4ec1-b3ed-1f58437a66e3_1024x1024.jpg?v=1491499634"/>
+		<img class = "bodypillow" src = "https://cdn.shopify.com/s/files/1/0713/4379/products/PoopyBodyPillow_365d7d06-f687-4ec1-b3ed-1f58437a66e3_1024x1024.jpg?v=1491499634"/>
+		<img class = "bodypillow" src = "https://cdn.shopify.com/s/files/1/0713/4379/products/PoopyBodyPillow_365d7d06-f687-4ec1-b3ed-1f58437a66e3_1024x1024.jpg?v=1491499634"/>
+	</div>
+</div>
+</body>
+</html>

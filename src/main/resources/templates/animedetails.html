@@ -1,0 +1,389 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<link rel="stylesheet" type="text/css" href="/css/toolbar.css" />
+<link rel="stylesheet" type="text/css" href="/css/animedetails.css" />
+</head>
+<body>
+
+<div class = "toolbar">
+	<div class = "first_row">
+		<a href = "/"><button class = "tool_butt" id = "logo"><p style = "color:red; display:inline; margin:0px;">W</p><p style="display:inline;margin:0px;">aifuWarriors</p></button></a>
+		<input type = "text" class = "search"></input>
+		<a href = "/"><button id = "search_butt">Search</button></a>
+		<div class = "slogan"><p>THE BEST </p><p style = "color:red;margin:0px;whitespace:initial; font-size:20px;">&ensp;FREE BODYPILLOW&ensp;</p><p>SITE</p></div>
+	</div>
+	<div class = "second_row">
+		<a href = "/anime/1"><button class = "tool_butt">All Anime</button> </a>
+		<a href = "/animesearch"><button class = "tool_butt">Search For Anime</button></a>
+		<a th:if="${loggedIn}" href = "/account"><button class = "tool_butt"><p th:text = "${currentuser}" /></button></a>
+		<a th:if="${loggedIn}" href = "/logout"><button class = "tool_butt">Logout</button></a>
+		<a th:unless="${loggedIn}" href = "/signup"><button class = "tool_butt">Sign Up!</button></a>
+		<a th:unless="${loggedIn}" href = "/login"><button class = "tool_butt">Log in!</button></a>
+	</div>
+	<div class = "third_row">
+		<a href = "/bodypillows"><button class = "tool_butt">All Bodypillows</button></a>
+		<a href = "/best"><button class = "tool_butt">Best Bodypillows</button></a>
+		<a href = "/amateur"><button class = "tool_butt">REAL Amateur Bodypillows!</button></a>
+		<a href = "/adventure"><button class = "tool_butt">BODYPILLOW ADVENTURE! ^_^</button></a>
+	</div>
+		<a href = "/summonerswar"><button class = "tool_butt" id = "sw_butt">Join WaifuWarriors in <img style = "width:81px;height:27px;" src = "https://43ch47qsavx2jcvnr30057vk-wpengine.netdna-ssl.com/wp-content/uploads/2015/01/logo@2x.png"/> Today!</button></a>
+</div>
+
+<div class = "animedetails">
+	<p th:text = "${anime.name}" />	
+	<a th:unless = "${loggedIn}" href = "/login">Please log in to vote</a>
+	<div th:if = "${loggedIn}">
+		<form th:if = "${hasVoted}" class = "form_checkList" action = "#" th:action = "@{/} + ${anime.name} + @{/update}" th:object = "${animevote}" method = "post">
+	    	<p> You have already voted. You may update your vote. </p>
+	    	<button class = "submit-votes" type="submit" value="Submit">Update Votes!</button><br/>
+		    <table class = "column">	
+	        	<tr>
+	        		<th>Category</th>
+	        		<th>Votes</th>
+	        		<th></th>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[0]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[0]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[0]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[1]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[1]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[1]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[2]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[2]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[2]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[3]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[3]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[3]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[4]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[4]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[4]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[5]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[5]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[5]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[6]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[6]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[6]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[7]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[7]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[7]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[8]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[8]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[8]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[9]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[9]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[9]}"/></td>
+	        	</tr>
+	        </table>
+	        <table class = "column">
+	        	<tr>
+	        		<th>Category</th>
+	        		<th>Votes</th>
+	        		<th></th>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[10]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[10]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[10]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[11]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[11]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[11]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[12]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[12]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[12]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[13]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[13]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[13]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[14]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[14]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[14]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[15]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[15]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[15]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[16]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[16]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[16]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[17]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[17]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[17]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[18]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[18]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[18]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[19]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[19]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[19]}"/></td>
+	        	</tr>
+	        </table>
+	        <table class = "column">
+	        	<tr>
+	        		<th>Category</th>
+	        		<th>Votes</th>
+	        		<th></th>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[20]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[20]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[20]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[21]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[21]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[21]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[22]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[22]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[22]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[23]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[23]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[23]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[24]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[24]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[24]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[25]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[25]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[25]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[26]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[26]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[26]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[27]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[27]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[27]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[28]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[28]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[28]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[29]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[29]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[29]}"/></td>
+	        	</tr>
+			</table>
+		</form>
+		<form th:unless = "${hasVoted}" class = "form_checkList" action = "#" th:action = "@{/} + ${anime.name} + @{/}" th:object = "${animevote}" method = "post">
+	    	<button class = "submit-votes" type="submit" value="Submit">Submit Votes!</button><br/>
+		    <table class = "column">	
+	        	<tr>
+	        		<th>Category</th>
+	        		<th>Votes</th>
+	        		<th></th>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[0]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[0]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[0]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[1]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[1]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[1]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[2]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[2]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[2]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[3]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[3]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[3]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[4]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[4]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[4]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[5]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[5]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[5]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[6]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[6]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[6]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[7]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[7]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[7]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[8]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[8]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[8]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[9]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[9]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[9]}"/></td>
+	        	</tr>
+	        </table>
+	        <table class = "column">
+	        	<tr>
+	        		<th>Category</th>
+	        		<th>Votes</th>
+	        		<th></th>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[10]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[10]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[10]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[11]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[11]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[11]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[12]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[12]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[12]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[13]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[13]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[13]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[14]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[14]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[14]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[15]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[15]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[15]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[16]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[16]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[16]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[17]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[17]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[17]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[18]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[18]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[18]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[19]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[19]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[19]}"/></td>
+	        	</tr>
+	        </table>
+	        <table class = "column">
+	        	<tr>
+	        		<th>Category</th>
+	        		<th>Votes</th>
+	        		<th></th>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[20]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[20]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[20]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[21]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[21]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[21]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[22]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[22]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[22]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[23]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[23]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[23]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[24]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[24]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[24]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[25]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[25]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[25]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[26]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[26]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[26]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[27]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[27]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[27]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[28]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[28]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[28]}"/></td>
+	        	</tr>
+	        	<tr>
+	        		<td><p th:text = "${anime.genres[29]}"/></td>
+	        		<td><p th:text = "${anime.genresVal[29]}"/></td>
+	        		<td><input type="checkbox" name="genre" th:field="*{genresSearch[29]}"/></td>
+	        	</tr>
+			</table>
+		</form>
+	</div>
+</div>
+</body>
+</html>

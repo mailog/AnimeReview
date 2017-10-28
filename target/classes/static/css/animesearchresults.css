@@ -1,0 +1,35 @@
+.anime-table
+{
+	display:none;
+}
+
+.anime-results:target .anime-table
+{
+	display:block;
+}
+
+.column
+{
+	display:inline-block;
+}
+
+.categories
+{
+	display:inline-block;
+	margin: 5px;
+}
+
+.categories-butt
+{
+	display:inline-block;
+	margin:5px;
+}
+
+.anime-results
+{
+	width:40%;
+	margin:5px;
+	border-style:solid;
+	border-color:black;
+	border-width:2px;
+}

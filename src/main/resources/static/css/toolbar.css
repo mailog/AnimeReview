@@ -1,0 +1,129 @@
+body
+{
+	background-color: white;
+	color:black;
+}
+
+.toolbar
+{
+	padding: 0px;
+	margin: 0 auto;
+}
+
+.first_row
+{
+	width:100%;
+}
+
+.slogan
+{
+	position:relative;
+	display:inline-block;
+	margin-left:25%;
+}
+
+.first_row p
+{
+	display:inline-block;
+	position:relative;
+	margin:0px;
+	text-align: right;
+}
+
+.second_row
+{
+	width:100%;
+	background-color:red;
+	color:white;
+}
+
+.second_row .tool_butt
+{
+	background-color:red;
+	color:white;
+	border-right: dotted;
+	border-width: 1px;
+	border-color: black;
+}
+
+.second_row p
+{
+	display:inline;
+	text-align: right;
+	margin:0px;
+	margin-left:5%;
+}
+
+.third_row
+{
+	width:100%;
+	background-color:black;
+	color:white;
+}
+
+.third_row .tool_butt
+{
+	background-color:black;
+	color:white;
+}
+
+.third_row p
+{
+	display:inline;
+	text-align: right;
+}
+
+.toolbar a
+{
+	margin: 0px 0px 0px 0px;
+}
+
+.tool_butt
+{
+	font-family: "Courier New", "Century Gothic";
+	background-color: red;
+	color:black;
+	border:none;
+	margin: 0px 0px 0px 0px;
+	text-decoration:none;
+	display:inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	cursor:pointer;
+}
+
+.tool_butt:hover
+{
+	
+}
+
+#sw_butt
+{
+	background-color:white;
+	color: #cc8800;
+}
+
+#logo
+{
+	background-color:black;
+	color:white;
+	height: 32px;
+	width:128px;
+}
+
+.search
+{
+	background-color:black;
+	border-color:red;
+}
+
+#search_butt
+{
+	border:solid;
+	border-width:1px;
+	border-radius:1px;
+	border-color:#707070;
+	text-decoration:none;
+	font-weight: bold;
+	cursor:pointer;
+}

@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Log In!</title>
+<meta th:if = "${validity}" http-equiv="refresh" content="0 url=/"/>
+<link rel="stylesheet" type="text/css" href="/css/toolbar.css" />
+<link rel="stylesheet" type="text/css" href="/css/home.css" />
+</head>
+<body>
+
+<div class = "toolbar">
+	<div class = "first_row">
+		<a href = "/"><button class = "tool_butt" id = "logo"><p style = "color:red; display:inline; margin:0px;">W</p><p style="display:inline;margin:0px;">aifuWarriors</p></button></a>
+		<input type = "text" class = "search"></input>
+		<a href = "/"><button id = "search_butt">Search</button></a>
+		<div class = "slogan"><p>THE BEST </p><p style = "color:red;margin:0px;whitespace:initial; font-size:20px;">&ensp;FREE BODYPILLOW&ensp;</p><p>SITE</p></div>
+	</div>
+	<div class = "second_row">
+		<a href = "/anime/1"><button class = "tool_butt">All Anime</button> </a>
+		<a href = "/animesearch"><button class = "tool_butt">Search For Anime</button></a>
+		<a th:if="${loggedIn}" href = "/account"><button class = "tool_butt"><p th:text = "${currentuser}" /></button></a>
+		<a th:if="${loggedIn}" href = "/logout"><button class = "tool_butt">Logout</button></a>
+		<a th:unless="${loggedIn}" href = "/signup"><button class = "tool_butt">Sign Up!</button></a>
+		<a th:unless="${loggedIn}" href = "/login"><button class = "tool_butt">Log in!</button></a>
+	</div>
+	<div class = "third_row">
+		<a href = "/bodypillows"><button class = "tool_butt">All Bodypillows</button></a>
+		<a href = "/best"><button class = "tool_butt">Best Bodypillows</button></a>
+		<a href = "/amateur"><button class = "tool_butt">REAL Amateur Bodypillows!</button></a>
+		<a href = "/adventure"><button class = "tool_butt">BODYPILLOW ADVENTURE! ^_^</button></a>
+	</div>
+		<a href = "/summonerswar"><button class = "tool_butt" id = "sw_butt">Join WaifuWarriors in <img style = "width:81px;height:27px;" src = "https://43ch47qsavx2jcvnr30057vk-wpengine.netdna-ssl.com/wp-content/uploads/2015/01/logo@2x.png"/> Today!</button></a>
+</div>
+
+<div class = "login">
+	<div th:unless="${validity}" id = "login">
+		<p th:text = "'Invalid Credentials'"/>
+	</div>
+</div>
+</body>
+</html>
