@@ -3,6 +3,8 @@
 <title>Home</title>
 <link rel="stylesheet" type="text/css" href="/css/toolbar.css" />
 <link rel="stylesheet" type="text/css" href="/css/home.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/chat.js"></script>
 </head>
 <body>
 
@@ -29,6 +31,14 @@
 	</div>
 		<a href = "/summonerswar"><button class = "tool_butt" id = "sw_butt">Join WaifuWarriors in <img style = "width:81px;height:27px;" src = "https://43ch47qsavx2jcvnr30057vk-wpengine.netdna-ssl.com/wp-content/uploads/2015/01/logo@2x.png"/> Today!</button></a>
 </div>		
+
+<pre class="chat"></pre>
+
+<form class = "livechat" action = "#" th:action = "@{/}" th:object = "${newMessage}" method = "post">
+	<input type = "text" class = "inp_name" th:field = "*{message}" /><br/>
+	<button class = "submit_button" value = "Submit"> Submit! </button>
+</form>
+	
 
 <div class = "home">
 	<div class = "row_img">

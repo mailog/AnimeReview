@@ -1,8 +1,11 @@
 package Waifu.Controller;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +31,7 @@ import database.Account;
 import database.AccountJDBC;
 import database.Anime;
 import database.AnimeJDBC;
+import database.NewMessage;
 import database.Vote;
 import database.VoteJDBC;
 
@@ -38,6 +42,7 @@ public class WebController extends WebMvcConfigurerAdapter {
 	public static AccountJDBC accountJDBC = (AccountJDBC) context.getBean("accountJDBCTemplate");
 	public static AnimeJDBC animeJDBC = (AnimeJDBC) context.getBean("animeJDBCTemplate");
 	public static VoteJDBC voteJDBC = (VoteJDBC) context.getBean("voteJDBCTemplate");
+	
 	
 	@RequestMapping(value = "/dontdoit", method = RequestMethod.GET)
 	String getWebScrape() throws IOException
@@ -66,12 +71,45 @@ public class WebController extends WebMvcConfigurerAdapter {
 		return "redirect:/";
 	}
 	
+	/*@RequestMapping(value = "/livechat", method = RequestMethod.GET)
+	String getLiveChat() throws IOException
+	{
+		File chat = new File("/txt/livechat.txt");
+		Scanner reader = new Scanner(chat);
+		String contents = "";
+		while(reader.hasNextLine())
+		{
+			contents += reader.nextLine();
+		}
+		System.out.println(contents +"!!");
+		reader.close();
+		return contents;
+	}*/
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET) 
-	ModelAndView getHome(@CookieValue(value = "USERNAME", defaultValue = "null") String currentuser){
+	ModelAndView getHome(@CookieValue(value = "USERNAME", defaultValue = "null") String currentuser) throws IOException{
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("loggedIn", !currentuser.equals("null"));
 		modelAndView.addObject("currentuser", currentuser);
+		modelAndView.addObject("newMessage", new NewMessage());
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	String postHome(@CookieValue(value = "USERNAME", defaultValue = "null") String currentuser, @ModelAttribute("newMessage") NewMessage newMessage)
+	{
+		
+		System.out.println(newMessage.getMessage());
+		try
+		{
+			FileWriter fileWriter = new FileWriter("static/txt/livechat.txt", true);
+			fileWriter.append("\n" + currentuser + ": " + newMessage.getMessage());
+			fileWriter.close();
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/account", method = RequestMethod.GET) 
